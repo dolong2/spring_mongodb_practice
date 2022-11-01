@@ -1,4 +1,4 @@
-package com.practice.mongodb.domain.posting.presentation.dto;
+package com.practice.mongodb.domain.posting.presentation.dto.request;
 
 import com.practice.mongodb.domain.posting.Posting;
 import lombok.AllArgsConstructor;
