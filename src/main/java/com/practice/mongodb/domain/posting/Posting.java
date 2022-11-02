@@ -4,16 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Builder
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collation = "Posting")
+@Document
 public class Posting {
-    @MongoId
+    @Id
     private String id;
     private String title;
     private String content;
