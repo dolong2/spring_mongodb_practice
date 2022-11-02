@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,5 +36,12 @@ public class PostingService {
                     .map(PostingResDto::new)
                     .collect(Collectors.toList())
         );
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void deletePosting(String id){
+        Posting posting = postingRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException());
+        postingRepository.delete(posting);
     }
 }

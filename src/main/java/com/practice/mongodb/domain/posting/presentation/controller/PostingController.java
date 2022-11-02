@@ -29,4 +29,10 @@ public class PostingController {
     public ResponseEntity<PostingResDto> getOnePosting(@PathVariable String id){
         return ResponseEntity.ok(postingService.getOnePosting(id));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletePosting(@PathVariable String id){
+        postingService.deletePosting(id);
+        return ResponseEntity.ok().build();
+    }
 }
