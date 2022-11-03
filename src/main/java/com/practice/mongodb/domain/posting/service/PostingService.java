@@ -2,6 +2,7 @@ package com.practice.mongodb.domain.posting.service;
 
 import com.practice.mongodb.domain.posting.Posting;
 import com.practice.mongodb.domain.posting.presentation.dto.request.PostingReqDto;
+import com.practice.mongodb.domain.posting.presentation.dto.request.PostingUpdateDto;
 import com.practice.mongodb.domain.posting.presentation.dto.response.PostingListResDto;
 import com.practice.mongodb.domain.posting.presentation.dto.response.PostingResDto;
 import com.practice.mongodb.domain.posting.repository.PostingRepository;
@@ -43,5 +44,12 @@ public class PostingService {
         Posting posting = postingRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException());
         postingRepository.delete(posting);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void updatePosting(String id, PostingUpdateDto postingUpdateDto){
+        Posting posting = postingRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException());
+        posting.update(postingUpdateDto);
     }
 }

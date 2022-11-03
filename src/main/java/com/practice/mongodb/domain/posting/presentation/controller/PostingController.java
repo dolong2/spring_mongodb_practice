@@ -1,6 +1,7 @@
 package com.practice.mongodb.domain.posting.presentation.controller;
 
 import com.practice.mongodb.domain.posting.presentation.dto.request.PostingReqDto;
+import com.practice.mongodb.domain.posting.presentation.dto.request.PostingUpdateDto;
 import com.practice.mongodb.domain.posting.presentation.dto.response.PostingListResDto;
 import com.practice.mongodb.domain.posting.presentation.dto.response.PostingResDto;
 import com.practice.mongodb.domain.posting.service.PostingService;
@@ -33,6 +34,12 @@ public class PostingController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePosting(@PathVariable String id){
         postingService.deletePosting(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updatePosting(@PathVariable String id, @RequestBody PostingUpdateDto postingUpdateDto){
+        postingService.updatePosting(id, postingUpdateDto);
         return ResponseEntity.ok().build();
     }
 }

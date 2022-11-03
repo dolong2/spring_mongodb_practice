@@ -1,5 +1,6 @@
 package com.practice.mongodb.domain.posting;
 
+import com.practice.mongodb.domain.posting.presentation.dto.request.PostingUpdateDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,4 +18,9 @@ public class Posting {
     private String id;
     private String title;
     private String content;
+
+    public void update(PostingUpdateDto postingUpdateDto){
+        this.title = postingUpdateDto.getTitle();
+        this.content = postingUpdateDto.getContent();
+    }
 }
